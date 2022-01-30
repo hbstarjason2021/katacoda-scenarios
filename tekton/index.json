@@ -59,6 +59,6 @@
     "ide": "ssh host01 '/opt/start-vscode.sh /root/example'"
   },
   "backend": {
-    "imageid": "kubernetes-cluster-running:1.19"
+    "imageid": "kubernetes-cluster-running:1.18"
   }
 }
