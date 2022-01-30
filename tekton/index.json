@@ -39,7 +39,7 @@
       }
     ],
     "intro": {
-      "text": "intro.md"
+      "text": "intro.md",
       "code": "assets/foreground.sh"
     },
     "finish": {
