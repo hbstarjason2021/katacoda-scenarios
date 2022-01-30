@@ -23,9 +23,9 @@ helm repo add prometheus-community \
 # set scrape interval to 10s
 
 helm install prometheus prometheus-community/prometheus -n default \
-  --set alertmanager.enabled=false,\
-        pushgateway.enabled=false,\
-        nodeExporter.enabled=false,\
-        kubeStateMetrics.enabled=false,\
-        server.global.scrape_interval=10s
+--set alertmanager.enabled=false,\
+pushgateway.enabled=false,\
+nodeExporter.enabled=false,\
+kubeStateMetrics.enabled=false,\
+server.global.scrape_interval=10s
 ```{{execute}}
