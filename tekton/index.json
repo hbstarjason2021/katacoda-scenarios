@@ -59,7 +59,7 @@
     "ide": "ssh host01 '/opt/start-vscode.sh /root/example'"
   },
   "backend": {
-    "imageid": "kubernetes-cluster-running:1.20"  
+    "imageid": "kubernetes-cluster-running:1.18"  
     //ubuntu:2004,ubuntu:1804,python:3.6,openjdk:15,golang:1.14,minikube,kubernetes-cluster:1.18,
   }
 }
