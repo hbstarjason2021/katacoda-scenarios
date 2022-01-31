@@ -6,15 +6,21 @@ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644 --write-kubec
 ```{{execute}}
 
 2.Install Helm
-
 ```bash
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 && \
   chmod 700 get_helm.sh && \
   ./get_helm.sh && helm version
 ```{{execute}}
 
-3.Install Prometheus
+3.Install kubecolor
+```bash
+wget https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubecolor_0.0.20_Linux_x86_64.tar.gz && \
+tar zvxf kubecolor_0.0.20_Linux_x86_64.tar.gz && \
+cp kubecolor /usr/local/bin/ && \
+kubecolor get pod -A
+```{{execute}}
 
+4.Install Prometheus
 ```bash
 helm repo add prometheus-community \
      https://prometheus-community.github.io/helm-charts
@@ -30,29 +36,25 @@ kubeStateMetrics.enabled=false,\
 server.global.scrape_interval=10s
 ```{{execute}}
 
-4.Deploy httpserver
-
+5.Deploy httpserver
 ```bash
 git clone https://github.com/hbstarjason2021/hpa-on-prometheus && cd hpa-on-prometheus
 
 kubectl apply -f kubernetes/sample-httpserver-deployment.yaml
 ```{{execute}}
 
-5.Install Produmetheus Adapter
-
+6.Install Produmetheus Adapter
 ```bash
 helm install prometheus-adapter prometheus-community/prometheus-adapter -n default -f kubernetes/values-adapter.yaml
 ```{{execute}}
 
-6.Config HPA
-
+7.Config HPA
 ```bash
 ##
 kubectl apply -f kubernetes/sample-httpserver-hpa.yaml
 ```{{execute}}
 
-7.Install vegeta
-
+8.Install vegeta
 ```bash
 ## https://github.com/tsenart/vegeta
 wget https://github.com/tsenart/vegeta/releases/download/v12.8.4/vegeta_12.8.4_linux_amd64.tar.gz && \
