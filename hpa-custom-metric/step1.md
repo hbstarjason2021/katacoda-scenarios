@@ -87,7 +87,7 @@ vegeta -version
 kubectl expose deploy sample-httpserver --name sample-httpserver-host --type NodePort --target-port 3000
 ```{{execute}}
 
-`kubecolor get svc`{{execute}}
+`kubecolor  get svc sample-httpserver-host`{{execute}}
 
 ```bash
 LOCAL_IP=$(ifconfig ens3 |grep "inet "| awk '{print $2}')
