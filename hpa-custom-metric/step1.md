@@ -17,8 +17,10 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scr
 wget https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubecolor_0.0.20_Linux_x86_64.tar.gz && \
 tar zvxf kubecolor_0.0.20_Linux_x86_64.tar.gz && \
 cp kubecolor /usr/local/bin/ && \
-kubecolor get pod -A
+kubecolor version
 ```{{execute}}
+
+`kubecolor get pod -A`{{execute}}
 
 4.Install Prometheus
 ```bash
@@ -36,6 +38,8 @@ kubeStateMetrics.enabled=false,\
 server.global.scrape_interval=10s
 ```{{execute}}
 
+`kubecolor get po  -A |grep prometheus`{{execute}}
+
 5.Deploy httpserver
 ```bash
 git clone https://github.com/hbstarjason2021/hpa-on-prometheus && cd hpa-on-prometheus
@@ -43,9 +47,19 @@ git clone https://github.com/hbstarjason2021/hpa-on-prometheus && cd hpa-on-prom
 kubectl apply -f kubernetes/sample-httpserver-deployment.yaml
 ```{{execute}}
 
+`kubecolor get po  -A  |grep httpserver`{{execute}}
+
 6.Install Produmetheus Adapter
 ```bash
-helm install prometheus-adapter prometheus-community/prometheus-adapter -n default -f kubernetes/values-adapter.yaml
+helm install prometheus-adapter \
+prometheus-community/prometheus-adapter -n default -f kubernetes/values-adapter.yaml
+```{{execute}}
+
+`kubecolor get po -A |grep adapter`{{execute}}
+
+```bash
+kubectl get --raw \
+'/apis/custom.metrics.k8s.io/v1beta1/namespaces/default/pods/*/http_requests_qps' | jq .
 ```{{execute}}
 
 7.Config HPA
@@ -53,6 +67,8 @@ helm install prometheus-adapter prometheus-community/prometheus-adapter -n defau
 ##
 kubectl apply -f kubernetes/sample-httpserver-hpa.yaml
 ```{{execute}}
+
+`kubecolor get hpa`{{execute}}
 
 8.Install vegeta
 ```bash
