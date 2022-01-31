@@ -78,3 +78,18 @@ tar zxvf vegeta_12.8.4_linux_amd64.tar.gz && \
 cp vegeta /usr/bin/ && \
 vegeta -version
 ```{{execute}}
+
+9.Expose httpserver
+
+`kubecolor get svc`{{execute}}
+
+```bash
+kubectl expose deploy sample-httpserver --name sample-httpserver-host --type NodePort --target-port 3000
+```{{execute}}
+
+`kubecolor get svc`{{execute}}
+
+```bash
+LOCAL_IP=$(ifconfig ens3 |grep "inet "| awk '{print $2}')
+echo "$LOCAL_IP"
+```{{execute}}
