@@ -67,3 +67,23 @@ hal config provider kubernetes account add ${ACCOUNT} \
 
 `hal config deploy edit --type distributed --account-name $ACCOUNT`{{execute}}
 
+5.Setting up the Storage
+```bash
+DEPLOYMENT="default"
+mkdir -p ~/.hal/$DEPLOYMENT/profiles/
+echo spinnaker.s3.versioning: false > ~/.hal/$DEPLOYMENT/profiles/front50-local.yml
+
+echo ${MINIO_ROOT_PASSWORD} | hal config storage s3 edit --endpoint $ENDPOINT \
+    --access-key-id ${MINIO_ROOT_USER} \
+    --secret-access-key
+```{{execute}}
+
+```bash
+hal config storage edit --type s3
+hal config storage s3 edit --path-style-access=true
+```{{execute}}
+
+6.Deploy Spinnaker
+`hal config version edit --version  1.26.3`{{execute}}
+
+`hal deploy apply`{{execute}}
