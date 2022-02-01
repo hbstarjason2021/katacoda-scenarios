@@ -2,9 +2,10 @@
 ```bash
 wget https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubecolor_0.0.20_Linux_x86_64.tar.gz && \
 tar zvxf kubecolor_0.0.20_Linux_x86_64.tar.gz && \
-cp kubecolor /usr/local/bin/ && \
-kubecolor version
+cp kubecolor /usr/local/bin/
 ```{{execute}}
+
+`kubecolor version`{{execute}}
 
 `kubecolor get pod -A`{{execute}}
 
@@ -31,7 +32,7 @@ ENDPOINT=http://$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddr
 
 3.Deploy Halyard
 ```bash
-docker run --name halyard --rm --network host  -v ~/.hal:/home/spinnaker/.hal \
+docker run -itd --name halyard --rm --network host  -v ~/.hal:/home/spinnaker/.hal \
 -v ~/.kube/:/home/spinnaker/.kube -v ~/.kube/:/root/.kube -v ~/.minikube/:/root/.minikube -it ghcr.io/ahmetozer/halyard-container
 ```{{execute}}
 
