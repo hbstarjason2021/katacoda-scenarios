@@ -1,29 +1,4 @@
-1.Initializing Environment 
-```bash
-apt-get update && \
-sudo apt-get install openjdk-11-jdk -y
-```{{execute}}
-
-```bash
-JAVA_HOME=$(dirname $( readlink -f $(which java) ))
-JAVA_HOME=$(realpath "$JAVA_HOME"/../)
-export JAVA_HOME
-```{{execute}}
-
-2.Install Halyard
-```bash
-curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh && \
- chmod +x ./InstallHalyard.sh && \
- useradd -m zhang && \
- bash InstallHalyard.sh --user zhang -y
-```{{execute}}
-
-```bash
-hal -v    
-hal version list
-```{{execute}}
-
-3.Install kubecolor
+1.Install kubecolor
 ```bash
 wget https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubecolor_0.0.20_Linux_x86_64.tar.gz && \
 tar zvxf kubecolor_0.0.20_Linux_x86_64.tar.gz && \
@@ -33,6 +8,62 @@ kubecolor version
 
 `kubecolor get pod -A`{{execute}}
 
-4.Install Minio
+2.Install Minio
+```bash
+MINIO_ROOT_USER=$(< /dev/urandom tr -dc a-z | head -c${1:-4})
+MINIO_ROOT_PASSWORD=$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-8})
+MINIO_PORT="9010"
+```{{execute}}
 
-5.Deploy Spinnaker
+```bash
+docker run -it -d --rm -v ~/.minio-data/:/data --name minio-4-spinnaker -p ${MINIO_PORT}:${MINIO_PORT} \
+-e MINIO_ROOT_USER=${MINIO_ROOT_USER} -e  MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD} \
+ minio/minio  server /data --address :${MINIO_PORT}
+```{{execute}}
+
+```bash
+echo "
+MINIO_ROOT_USER=${MINIO_ROOT_USER}
+MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+ENDPOINT=http://$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' minio-4-spinnaker):${MINIO_PORT}
+"
+```{{execute}}
+
+3.Deploy Halyard
+```bash
+docker run --name halyard --rm --network host  -v ~/.hal:/home/spinnaker/.hal \
+-v ~/.kube/:/home/spinnaker/.kube -v ~/.kube/:/root/.kube -v ~/.minikube/:/root/.minikube -it ghcr.io/ahmetozer/halyard-container
+```{{execute}}
+
+`docker exec -it halyard bash`{{execute}}
+
+4.Setting up the provider
+```bash
+CONTEXT=$(kubectl config current-context)
+kubectl apply --context $CONTEXT \
+    -f https://spinnaker.io/downloads/kubernetes/service-account.yml
+```{{execute}}
+
+```bash
+TOKEN=$(kubectl get secret --context $CONTEXT \
+   $(kubectl get serviceaccount spinnaker-service-account \
+       --context $CONTEXT \
+       -n spinnaker \
+       -o jsonpath='{.secrets[0].name}') \
+   -n spinnaker \
+   -o jsonpath='{.data.token}' | base64 --decode)
+   
+kubectl config set-credentials ${CONTEXT}-token-user --token $TOKEN
+kubectl config set-context $CONTEXT --user ${CONTEXT}-token-user   
+```{{execute}}
+
+```bash
+hal config provider kubernetes enable
+
+ACCOUNT="my-k8s-account"
+hal config provider kubernetes account add ${ACCOUNT} \
+    --context ${CONTEXT}
+```{{execute}}
+
+`hal config deploy edit --type distributed --account-name $ACCOUNT`{{execute}}
+
