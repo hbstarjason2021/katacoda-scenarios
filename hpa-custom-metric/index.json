@@ -39,6 +39,8 @@
   },
   "environment": {
     "hideintro": true,
+    "showdashboard": true,
+    "dashboards": [{"name": "Prometheus", "href": "https://[[HOST2_SUBDOMAIN]]-9090-[[KATACODA_HOST]].environments.katacoda.com"}],
     "uilayout": "terminal"
   },
   "backend": {
