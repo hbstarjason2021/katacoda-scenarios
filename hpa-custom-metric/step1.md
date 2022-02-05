@@ -100,20 +100,20 @@ echo "$LOCAL_IP"
 ```bash
 export PORT=$(kubectl get svc sample-httpserver-host -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
 echo "Accessing host01:$PORT"
-curl host01:$PORT
+curl http://host01:$PORT
 ```{{execute}}
 
 10.
 ```bash
-echo "GET host01:$PORT" | vegeta attack -duration 60s -connections 10 -rate 240 | vegeta report
+echo "GET http://host01:$PORT" | vegeta attack -duration 60s -connections 10 -rate 240 | vegeta report
 ```{{execute}}
 
 ```bash
-echo "GET host01:$PORT" | vegeta attack -duration 60s -connections 10 -rate 120 | vegeta report
+echo "GET http://host01:$PORT" | vegeta attack -duration 60s -connections 10 -rate 120 | vegeta report
 ```{{execute}}
 
 ```bash
-echo "GET host01:$PORT" | vegeta attack -duration 60s -connections 10 -rate 40 | vegeta report
+echo "GET http://host01:$PORT" | vegeta attack -duration 60s -connections 10 -rate 40 | vegeta report
 ```{{execute}}
 
 ```bash
