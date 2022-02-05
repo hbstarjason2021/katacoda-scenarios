@@ -52,7 +52,7 @@ kubectl apply -f kubernetes/sample-httpserver-deployment.yaml
 
 `kubecolor get po  -A  |grep httpserver`{{execute}}
 
-6.Install Produmetheus Adapter
+6.Install Prometheus Adapter
 ```bash
 helm install prometheus-adapter \
 prometheus-community/prometheus-adapter -n default -f kubernetes/values-adapter.yaml
