@@ -1,0 +1,19 @@
+{
+    "courses": [
+      {
+        "title": "hpa-custom-metric",
+        "description": "Kubernetes HPA controllable elastic scaling based on metrics defined by Prometheus",
+        "id": "hpa-custom-metric"
+      },
+      {
+        "title": "Spinnaker",
+        "description": "Spinnaker Workshop",
+        "id": "spinnaker"
+      },
+      {
+        "title": "Tekton",
+        "description": "Tekton Workshop",
+        "id": "tekton"
+      }
+    ]
+}
