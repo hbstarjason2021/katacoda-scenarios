@@ -96,3 +96,30 @@ kubectl expose deploy sample-httpserver --name sample-httpserver-host --type Nod
 LOCAL_IP=$(ifconfig ens3 |grep "inet "| awk '{print $2}')
 echo "$LOCAL_IP"
 ```{{execute}}
+
+```bash
+export PORT=$(kubectl get svc sample-httpserver-host -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
+echo "Accessing host01:$PORT"
+curl host01:$PORT
+```{{execute}}
+
+10.
+```bash
+echo "GET host01:$PORT" | vegeta attack -duration 60s -connections 10 -rate 240 | vegeta report
+```{{execute}}
+
+```bash
+echo "GET host01:$PORT" | vegeta attack -duration 60s -connections 10 -rate 120 | vegeta report
+```{{execute}}
+
+```bash
+echo "GET host01:$PORT" | vegeta attack -duration 60s -connections 10 -rate 40 | vegeta report
+```{{execute}}
+
+```bash
+kubecolor describe hpa sample-httpserver
+```{{execute}}
+
+```bash
+kubecolor describe deploy sample-httpserver
+```{{execute}}
