@@ -38,7 +38,7 @@ kubeStateMetrics.enabled=false,\
 server.global.scrape_interval=10s
 ```{{execute}}
 
-`kubecolor get po  -A |grep prometheus`{{execute}}
+`kubecolor get po  -A |grep --color=always prometheus`{{execute}}
 
 `kubectl port-forward --address 0.0.0.0 svc/prometheus-server 9090:80`{{execute}}
 Access port 9090 of the node in your browser: https://[[HOST_SUBDOMAIN]]-9090-[[KATACODA_HOST]].environments.katacoda.com/
@@ -50,7 +50,7 @@ git clone https://github.com/hbstarjason2021/hpa-on-prometheus && cd hpa-on-prom
 kubectl apply -f kubernetes/sample-httpserver-deployment.yaml
 ```{{execute}}
 
-`kubecolor get po  -A  |grep httpserver`{{execute}}
+`kubecolor get po  -A  |grep --color=always httpserver`{{execute}}
 
 6.Install Prometheus Adapter
 ```bash
