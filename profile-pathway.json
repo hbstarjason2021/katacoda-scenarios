@@ -1,8 +1,8 @@
 {
     "courses": [
       {
-        "title": "hpa-custom-metric",
-        "description": "Kubernetes HPA controllable elastic scaling based on metrics defined by Prometheus",
+        "title": "HPA-Custom-Metric",
+        "description": "Kubernetes HPA controllable elastic scaling based on metrics defined by prometheus-adapter",
         "id": "hpa-custom-metric"
       },
       {
