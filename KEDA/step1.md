@@ -125,7 +125,7 @@ done
 `kubecolor -n nginx-demo get hpa`{{execute}}  
 
 ```bash
-for i in {1..5}; do
+for i in {6..12}; do
     rabbitmqadmin --host $LOCAL_IP -u demo -p demo \
         publish exchange=amq.default routing_key=demo_queue payload="message ${i}"
 done
@@ -138,3 +138,12 @@ done
 `kubecolor -n nginx-demo get hpa`{{execute}}
 
 
+```bash
+rabbitmqadmin -H $LOCAL_IP -u demo -p demo \
+    purge queue name=demo_queue
+```{{execute}}
+
+`rabbitmqadmin -H $LOCAL_IP -u demo -p demo list queues`{{execute}}
+`kubecolor -n nginx-demo get scaledobject`{{execute}}   
+`kubecolor -n nginx-demo get pod`{{execute}}   
+`kubecolor -n nginx-demo get hpa`{{execute}}
