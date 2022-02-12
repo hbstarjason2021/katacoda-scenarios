@@ -106,9 +106,9 @@ spec:
 EOF
 ```{{execute}}
 
-`kubecolor get scaledobject`{{execute}}   
-`kubecolor get pod`{{execute}}   
-`kubecolor get hpa`{{execute}}   
+`kubecolor -n nginx-demo get scaledobject`{{execute}}   
+`kubecolor -n nginx-demo get pod`{{execute}}   
+`kubecolor -n nginx-demo get hpa`{{execute}}   
 
 5.Testing  
 ```bash
@@ -120,9 +120,9 @@ done
 
 `rabbitmqadmin -H $LOCAL_IP -u demo -p demo list queues`{{execute}}
 
-`kubecolor get scaledobject`{{execute}}   
-`kubecolor get pod`{{execute}}   
-`kubecolor get hpa`{{execute}}  
+`kubecolor -n nginx-demo get scaledobject`{{execute}}   
+`kubecolor -n nginx-demo get pod`{{execute}}   
+`kubecolor -n nginx-demo get hpa`{{execute}}  
 
 ```bash
 for i in {1..5}; do
@@ -133,8 +133,8 @@ done
 
 `rabbitmqadmin -H $LOCAL_IP -u demo -p demo list queues`{{execute}}
 
-`kubecolor get scaledobject`{{execute}}   
-`kubecolor get pod`{{execute}}   
-`kubecolor get hpa`{{execute}}
+`kubecolor -n nginx-demo get scaledobject`{{execute}}   
+`kubecolor -n nginx-demo get pod`{{execute}}   
+`kubecolor -n nginx-demo get hpa`{{execute}}
 
 
