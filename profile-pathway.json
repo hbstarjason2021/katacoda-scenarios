@@ -19,6 +19,11 @@
         "title": "SaltStack",
         "description": "SaltStack Workshop",
         "id": "saltstack"
+      },
+      {
+        "title": "KEDA",
+        "description": "KEDA RabbitMQ",
+        "id": "saltstack"
       }        
     ]
 }
