@@ -19,6 +19,7 @@ helm install keda kedacore/keda --namespace keda
 
 `kubecolor get pods -n keda`{{execute}}
 
+
 2.Install RabbitMQ
 `sudo apt-get install erlang-nox -y`{{execute}}
 `sudo apt-get update -y`{{execute}}
@@ -52,6 +53,12 @@ echo "$LOCAL_IP"
 ```bash
 MQ_SECRET=$(echo -n amqp://demo:demo@$LOCAL_IP:5672/ | base64)
 echo "$MQ_SECRET"
+```{{execute}}
+
+```bash
+kubectl create ns nginx-demo
+kubectl apply -n nginx-demo -f \
+   https://raw.githubusercontent.com/kubernetes/website/main/content/en/examples/controllers/nginx-deployment.yaml
 ```{{execute}}
 
 ```bash
