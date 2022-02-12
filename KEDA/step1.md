@@ -6,7 +6,7 @@ helm repo update
 
 kubectl create namespace keda
 helm install keda kedacore/keda --namespace keda
-```
+``` {{execute}}
 
 `kubectl get pods -n keda`{{execute}}
 
