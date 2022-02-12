@@ -1,5 +1,4 @@
-1.Install KEDA  
-
+1.Install KEDA   
 ```bash
 wget https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubecolor_0.0.20_Linux_x86_64.tar.gz && \
 tar zvxf kubecolor_0.0.20_Linux_x86_64.tar.gz && \
@@ -43,7 +42,8 @@ rabbitmqadmin --host 127.0.0.1 -u guest -p guest \
 ```bash
 rabbitmqadmin --host 127.0.0.1 -u guest -p guest \
     declare queue name=demo_queue
-```{{execute}}
+```{{execute}}  
+
 4.
 ```bash
 LOCAL_IP=$(ifconfig ens3 |grep "inet "| awk '{print $2}')
@@ -108,7 +108,7 @@ EOF
 `kubecolor get pod`{{execute}}   
 `kubecolor get hpa`{{execute}}   
 
-5.Testing
+5.Testing  
 ```bash
 for i in {1..5}; do
     rabbitmqadmin --host $LOCAL_IP -u demo -p demo \
@@ -121,5 +121,18 @@ done
 `kubecolor get scaledobject`{{execute}}   
 `kubecolor get pod`{{execute}}   
 `kubecolor get hpa`{{execute}}  
+
+```bash
+for i in {1..5}; do
+    rabbitmqadmin --host $LOCAL_IP -u demo -p demo \
+        publish exchange=amq.default routing_key=demo_queue payload="message ${i}"
+done
+```{{execute}}
+
+`rabbitmqadmin -H $LOCAL_IP -u demo -p demo list queues`{{execute}}
+
+`kubecolor get scaledobject`{{execute}}   
+`kubecolor get pod`{{execute}}   
+`kubecolor get hpa`{{execute}}
 
 
