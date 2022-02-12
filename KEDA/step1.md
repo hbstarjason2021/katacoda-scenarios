@@ -20,7 +20,7 @@ helm install keda kedacore/keda --namespace keda
 `kubecolor get pods -n keda`{{execute}}
 
 
-2.Install RabbitMQ
+2.Install RabbitMQ   
 `sudo apt-get install erlang-nox -y`{{execute}}
 `sudo apt-get update -y`{{execute}}
 `sudo apt-get install rabbitmq-server -y`{{execute}}
@@ -104,9 +104,9 @@ spec:
 EOF
 ```{{execute}}
 
-`kubecolor get scaledobject`{{execute}}
-`kubecolor get pod`{{execute}}
-`kubecolor get hpa`{{execute}}
+`kubecolor get scaledobject`{{execute}}   
+`kubecolor get pod`{{execute}}   
+`kubecolor get hpa`{{execute}}   
 
 5.Testing
 ```bash
@@ -118,8 +118,8 @@ done
 
 `rabbitmqadmin -H $LOCAL_IP -u demo -p demo list queues`{{execute}}
 
-`kubecolor get scaledobject`{{execute}}
-`kubecolor get pod`{{execute}}
-`kubecolor get hpa`{{execute}}
+`kubecolor get scaledobject`{{execute}}   
+`kubecolor get pod`{{execute}}   
+`kubecolor get hpa`{{execute}}  
 
 
