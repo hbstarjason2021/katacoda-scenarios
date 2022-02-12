@@ -23,7 +23,7 @@
       {
         "title": "KEDA",
         "description": "KEDA RabbitMQ",
-        "id": "saltstack"
+        "id": "keda"
       }        
     ]
 }
