@@ -61,6 +61,8 @@ kubectl apply -n nginx-demo -f \
    https://raw.githubusercontent.com/kubernetes/website/main/content/en/examples/controllers/nginx-deployment.yaml
 ```{{execute}}
 
+`kubecolor get pod -n nginx-demo`{{execute}}
+
 ```bash
 cat <<EOF | kubectl apply -n nginx-demo -f -
 ---
