@@ -20,4 +20,6 @@
 
 `systemctl restart salt-minion`
 
-`salt \* test.ping`{{execute}}
+`salt \* test.ping`{{execute}}  
+
+`salt "*" cmd.run "ip a"`{{execute}}
