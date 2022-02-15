@@ -8,6 +8,8 @@
 
 `sed -i "s/#auto_accept: False/auto_accept: True/g" /etc/salt/master`{{execute}}
 
+`sudo ufw allow proto tcp from any to any port 4505,4506`{{execute}}
+
 `systemctl restart salt-master`{{execute}}
 
 `LOCAL_IP=$(ifconfig ens3 |grep "inet "| awk '{print $2}') && echo "$LOCAL_IP"`{{execute}}
