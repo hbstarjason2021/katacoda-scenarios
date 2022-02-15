@@ -12,10 +12,10 @@
 
 `LOCAL_IP=$(ifconfig ens3 |grep "inet "| awk '{print $2}') && echo "$LOCAL_IP"`{{execute}}
 
-`apt -y install salt-minion`{{execute}}
+`apt -y install salt-minion`
 
-`sed -i "s/#master: salt/master: $LOCAL_IP/g" /etc/salt/minion`{{execute}}
+`sed -i "s/#master: salt/master: $LOCAL_IP/g" /etc/salt/minion`
 
-`systemctl restart salt-minion`{{execute}}
+`systemctl restart salt-minion`
 
 `salt \* test.ping`{{execute}}
