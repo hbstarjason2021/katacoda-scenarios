@@ -21,7 +21,9 @@ cp kubecolor /usr/local/bin/
 `bash setup-kubernetes-provider.sh`{{execute}}
 
 6.Deploy Spinnaker    
-`hal deploy apply`{{execute}} 
+`hal deploy apply`{{execute}}  
+
+`kubecolor -n spinnaker get po`{{execute}}  
 
 7.Deploy Ingress-nginx     
 `bash`{{execute}}
