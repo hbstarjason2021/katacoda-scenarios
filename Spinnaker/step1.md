@@ -28,7 +28,7 @@ cp kubecolor /usr/local/bin/
 7.Deploy Ingress-nginx     
 `bash install-ingress-nginx.sh`{{execute}}  
 
-8.spin-get             
+8.spin-gate                
 `kubectl -n spinnaker port-forward --address 0.0.0.0 svc/spin-gate 8084:8084`{{execute}}  
 
 9.spin-deck      
