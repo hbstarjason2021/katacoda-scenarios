@@ -26,4 +26,4 @@ cp kubecolor /usr/local/bin/
 `kubecolor -n spinnaker get po`{{execute}}  
 
 7.Deploy Ingress-nginx     
-`bash`{{execute}}
+`bash install-ingress-nginx.sh`{{execute}}
