@@ -73,7 +73,9 @@ hal config provider kubernetes account add ${ACCOUNT} \
 DEPLOYMENT="default"
 mkdir -p ~/.hal/$DEPLOYMENT/profiles/
 echo spinnaker.s3.versioning: false > ~/.hal/$DEPLOYMENT/profiles/front50-local.yml
+```{{execute}}
 
+```bash
 ###### ${MINIO_ROOT_PASSWORD}
 ###### ${MINIO_ROOT_USER}
 
