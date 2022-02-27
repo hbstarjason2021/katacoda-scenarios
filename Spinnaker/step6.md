@@ -74,11 +74,8 @@ DEPLOYMENT="default"
 mkdir -p ~/.hal/$DEPLOYMENT/profiles/
 echo spinnaker.s3.versioning: false > ~/.hal/$DEPLOYMENT/profiles/front50-local.yml
 
-echo "
-MINIO_ROOT_USER=${MINIO_ROOT_USER}
-MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
-ENDPOINT=http://$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' minio-4-spinnaker):${MINIO_PORT}
-"
+###### ${MINIO_ROOT_PASSWORD}
+###### ${MINIO_ROOT_USER}
 
 echo ${MINIO_ROOT_PASSWORD} | hal config storage s3 edit --endpoint $ENDPOINT \
     --access-key-id ${MINIO_ROOT_USER} \
