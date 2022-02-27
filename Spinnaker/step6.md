@@ -87,7 +87,7 @@ hal config storage edit --type s3
 hal config storage s3 edit --path-style-access=true
 ```{{execute}}
 
-6.Deploy Spinnaker
+6.Deploy Spinnaker    
 `hal config version edit --version  1.26.6`{{execute}}
 
 `hal deploy apply`{{execute}}
