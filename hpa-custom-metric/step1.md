@@ -7,10 +7,8 @@ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644 --write-kubec
 
 2.Install Helm
 ```bash
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 && \
-  chmod 700 get_helm.sh && \
-  ./get_helm.sh && helm version
-```{{execute}}
+curl -sSL https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz |  sudo tar xz -C /usr/local/bin --strip-components=1 linux-amd64/helm
+```{{execute}} 
 
 3.Install kubecolor
 ```bash
