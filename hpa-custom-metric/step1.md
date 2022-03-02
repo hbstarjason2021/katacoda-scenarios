@@ -2,7 +2,7 @@
 
 ```bash
 export INSTALL_K3S_VERSION=v1.23.1+k3s2 
-curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644 --write-kubeconfig ~/.kube/config
+curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig ~/.kube/config
 ```{{execute}}
 
 2.Install Helm
