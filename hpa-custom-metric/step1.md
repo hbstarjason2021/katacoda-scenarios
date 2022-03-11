@@ -38,7 +38,7 @@ server.global.scrape_interval=10s
 
 `kubecolor get po  -A |grep --color=always prometheus`{{execute}}
 
-`kubectl port-forward --address 0.0.0.0 svc/prometheus-server 9090:80`{{execute}}
+`kubectl port-forward --address 0.0.0.0 svc/prometheus-server 9090:80 > /dev/null 2>&1 &`{{execute}}
 Access port 9090 of the node in your browser: https://[[HOST_SUBDOMAIN]]-9090-[[KATACODA_HOST]].environments.katacoda.com/
 
 5.Deploy httpserver
