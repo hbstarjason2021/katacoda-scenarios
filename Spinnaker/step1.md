@@ -34,4 +34,4 @@ cp kubecolor /usr/local/bin/
 9.spin-deck    
 `kubectl -n spinnaker port-forward --address 0.0.0.0 svc/spin-deck 9000:9000`{{execute}}    
 
-Access port 9090 of the node in your browser: https://[[HOST_SUBDOMAIN]]-9000-[[KATACODA_HOST]].environments.katacoda.com/
+Access port 9000 of the node in your browser: https://[[HOST_SUBDOMAIN]]-9000-[[KATACODA_HOST]].environments.katacoda.com/
