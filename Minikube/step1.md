@@ -24,7 +24,9 @@ sudo install minikube /usr/local/bin/`{{execute}}
 
 `echo "Accessing host01:$PORT"`{{execute}}     
 
-`curl host01:$PORT`{{execute}}      
+`curl host01:$PORT`{{execute}}     
+
+`minikube service --all`{{execute}} 
 
 `minikube addons list`{{execute}}      
 
