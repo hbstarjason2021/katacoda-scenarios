@@ -29,7 +29,10 @@
       "text": "finish.md"
     }
   },
-  "environment": {},
+  "environment": 
+    {
+      "uilayout": "terminal"
+    },
   "backend": {
     "imageid": "minikube"
   }
