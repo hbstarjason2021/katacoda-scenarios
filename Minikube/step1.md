@@ -19,5 +19,13 @@
 
 `echo "Accessing host01:$PORT"`{{execute}}     
 
-` curl host01:$PORT`{{execute}}     
+`curl host01:$PORT`{{execute}}      
+
+`minikube addons list`{{execute}}      
+
+`minikube addons enable ingress`{{execute}}       
+
+`minikube addons enable metrics-server`{{execute}}    
+
+`minikube addons list`{{execute}}    
 
