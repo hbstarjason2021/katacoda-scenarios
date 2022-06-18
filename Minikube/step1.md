@@ -3,7 +3,7 @@
 
 `minikube start`{{execute}}      
 
-`kubectl cluster-info{{execute}}       
+`kubectl cluster-info`{{execute}}       
 
 `kubectl get nodes`{{execute}}     
 
