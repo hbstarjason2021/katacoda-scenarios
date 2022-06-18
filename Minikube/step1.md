@@ -7,11 +7,11 @@
 
 `kubectl get nodes`{{execute}}     
 
-`kubecolor get pod -A`{{execute}}     
+`kubectl get pod -A`{{execute}}     
 
 `kubectl run first-deployment --image=katacoda/docker-http-server --port=80`{{execute}}       
 
-`kubecolor get pod`{{execute}}        
+`kubectl get pod`{{execute}}        
 
 `kubectl expose deployment first-deployment --port=80 --type=NodePort`{{execute}}    
 
