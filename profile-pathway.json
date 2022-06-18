@@ -11,6 +11,16 @@
         "id": "spinnaker"
       },
       {
+        "title": "KEDA",
+        "description": "KEDA RabbitMQ",
+        "id": "keda"
+      },
+      {
+        "title": "MiniKube",
+        "description": "MiniKube",
+        "id": "miniKube"
+      },
+      {
         "title": "Tekton",
         "description": "Tekton Workshop",
         "id": "tekton"
@@ -19,11 +29,6 @@
         "title": "SaltStack",
         "description": "SaltStack Workshop",
         "id": "saltstack"
-      },
-      {
-        "title": "KEDA",
-        "description": "KEDA RabbitMQ",
-        "id": "keda"
-      }        
+      }
     ]
 }
