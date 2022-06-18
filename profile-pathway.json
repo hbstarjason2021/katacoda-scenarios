@@ -17,8 +17,8 @@
       },
       {
         "title": "MiniKube",
-        "description": "MiniKube",
-        "id": "miniKube"
+        "description": "MiniKube Cilium",
+        "id": "minikube"
       },
       {
         "title": "Tekton",
