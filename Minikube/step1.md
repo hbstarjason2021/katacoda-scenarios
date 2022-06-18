@@ -6,7 +6,7 @@ sudo install minikube /usr/local/bin/`{{execute}}
 
 `minikube version`{{execute}}    
 
-`minikube start --kubernetes-version=v1.23.3`{{execute}}      
+`minikube start --cni=cilium --kubernetes-version=v1.23.3`{{execute}}      
 
 `kubectl cluster-info`{{execute}}       
 
