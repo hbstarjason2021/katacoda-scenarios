@@ -1,4 +1,5 @@
 
+1.Install Tekton     
 `kubectl apply --filename \
 https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml`{{execute}}    
 
@@ -6,6 +7,7 @@ https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml`{{ex
   
 `kubectl get po -n tekton-pipelines`{{execute}}      
 
+2.Install Tekton CLI    
 `curl -sLO \
 https://github.com/tektoncd/cli/releases/download/v0.24.0/tkn_0.24.0_Linux_x86_64.tar.gz && \
 tar xvzf tkn_0.24.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn`{{execute}}     
@@ -17,7 +19,14 @@ https://raw.githubusercontent.com/tektoncd/catalog/main/task/git-clone/0.4/git-c
 
 `tkn hub install task git-clone`{{execute}}     
 
+3.Install Tekton Dashboard     
 `kubectl apply -f \ 
-https://storage.googleapis.com/tekton-releases/chains/latest/release.yaml`{{execute}}   
+https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml`{{execute}}
+
+4.Install Tekton Chains    
+`kubectl apply -f \ 
+https://storage.googleapis.com/tekton-releases/chains/latest/release.yaml`{{execute}}       
+
+
 
 
