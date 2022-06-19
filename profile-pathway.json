@@ -16,15 +16,15 @@
         "id": "keda"
       },
       {
-        "title": "MiniKube",
-        "description": "MiniKube Cilium",
-        "id": "minikube"
-      },
-      {
         "title": "Tekton",
         "description": "Tekton Workshop",
         "id": "tekton"
       },
+      {
+        "title": "MiniKube",
+        "description": "MiniKube Cilium",
+        "id": "minikube"
+      },        
       {
         "title": "SaltStack",
         "description": "SaltStack Workshop",
