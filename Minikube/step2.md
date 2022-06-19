@@ -15,4 +15,9 @@ tar xvzf tkn_0.24.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn`{{execute}}
 `kubectl apply -f \ 
 https://raw.githubusercontent.com/tektoncd/catalog/main/task/git-clone/0.4/git-clone.yaml`{{execute}}      
 
-`tkn hub install task git-clone`{{execute}} 
+`tkn hub install task git-clone`{{execute}}     
+
+`kubectl apply -f \ 
+https://storage.googleapis.com/tekton-releases/chains/latest/release.yaml`{{execute}}   
+
+
