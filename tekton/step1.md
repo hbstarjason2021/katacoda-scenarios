@@ -13,4 +13,13 @@ sudo install minikube /usr/local/bin/`{{execute}}
 
 `kubectl get nodes`{{execute}}     
 
-`kubectl get pod -A`{{execute}}    
+`kubectl get pod -A`{{execute}}      
+
+3.Install k9s     
+`wget https://github.com/derailed/k9s/releases/download/v0.25.18/k9s_Linux_x86_64.tar.gz`{{execute}}     
+
+`tar zvxf k9s_Linux_x86_64.tar.gz`{{execute}}      
+
+`./k9s`{{execute}}       
+
+
