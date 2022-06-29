@@ -30,7 +30,7 @@
     }
   },
   "environment": {
-    "uilayout": "terminal"
+    "uilayout": "vscode-terminal-split"
   },
   "backend": {
     "imageid": "vscode"
