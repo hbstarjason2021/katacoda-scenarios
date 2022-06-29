@@ -29,6 +29,11 @@
         "title": "SaltStack",
         "description": "SaltStack Workshop",
         "id": "saltstack"
+      },        
+      {
+        "title": "VScode",
+        "description": "vscode",
+        "id": "vscode"
       }
     ]
 }
