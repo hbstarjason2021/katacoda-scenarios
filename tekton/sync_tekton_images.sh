@@ -29,11 +29,11 @@ for image in $REKOR_ATTESTATION_IMAGES; do
   printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
 done
 
-### cat << EOF > tekton_images_list
-### ${REKOR_ATTESTATION_IMAGES}
-### EOF
+cat << EOF > tekton_images_list
+  ${REKOR_ATTESTATION_IMAGES}
+EOF
 
-cat ${REKOR_ATTESTATION_IMAGES}  | while read line
+cat tekton_images_list  | while read line
 do 
     echo ${line}
        
