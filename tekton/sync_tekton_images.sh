@@ -25,13 +25,13 @@ REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq
 curl "$RELEASE_FILE" > release.yaml
 
 # For each image in the attestation, match it to the release file
-### printf $image; grep -q $image release.yaml && echo " "
 for image in $REKOR_ATTESTATION_IMAGES; do
- { cat  >>  tekton_images_list <<EOF
-  $image
-EOF
- }
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
 done
+
+cat << EOF > tekton_images_list
+${REKOR_ATTESTATION_IMAGES}
+EOF
 
 cat tekton_images_list  | while read line
 do 
@@ -42,3 +42,16 @@ do
     #docker images |grep ${S_REGISTRY}
     #docker images |grep ${T_REGISTRY}
 done 
+
+<<'COMMENT'
+####################################################
+# For each image in the attestation, match it to the release file
+### printf $image; grep -q $image release.yaml && echo " "
+for image in $REKOR_ATTESTATION_IMAGES; do
+ { cat  >>  tekton_images_list <<EOF
+  $image
+EOF
+ }
+done
+##################################################
+COMMENT
