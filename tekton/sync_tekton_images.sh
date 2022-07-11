@@ -14,7 +14,7 @@ rekor-cli version
 
 ### https://github.com/tektoncd/pipeline/releases
 
-RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/${v0.37.2}/release.yaml
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/${TEKTON_VER}/release.yaml
 REKOR_UUID=362f8ecba72f43269cf1514976bb3f5f404667c6c02359a4a04e762b2c318b8f5195cec448cd6b26
 
 ### rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
