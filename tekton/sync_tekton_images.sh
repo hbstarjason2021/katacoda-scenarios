@@ -45,8 +45,6 @@ done
 
 <<'COMMENT'
 ####################################################
-# For each image in the attestation, match it to the release file
-### printf $image; grep -q $image release.yaml && echo " "
 for image in $REKOR_ATTESTATION_IMAGES; do
  { cat  >>  tekton_images_list <<EOF
   $image
