@@ -27,6 +27,10 @@ REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq
 # Download the release file
 curl "$RELEASE_FILE" > release.yaml
 
+### curl https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.37.2/release.yaml -o release.yaml
+### grep  -v "#" release.yaml | grep -v "^$"  > release1.yaml  ; sed -i 's/\-\-\-/###/g' release1.yaml
+
+
 # For each image in the attestation, match it to the release file
 for image in $REKOR_ATTESTATION_IMAGES; do
   printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
