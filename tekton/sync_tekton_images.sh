@@ -19,6 +19,8 @@ REKOR_UUID=362f8ecba72f43269cf1514976bb3f5f404667c6c02359a4a04e762b2c318b8f5195c
 
 ### rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
 
+apt install jq -y
+
 # Obtains the list of images with sha from the attestation
 REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.37.2@sha256:" + .digest.sha256')
 
